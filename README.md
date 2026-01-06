@@ -24,5 +24,4 @@ Through this project, I gained hands-on experience in:
 
 
 ---
-**Developed by Neshitha Korrapati** *PGDM Student (Finance & Analytics)* www.linkedin.com/in/
-neshitha-korrapati | neshitha.kc@gmail.com 
+**Developed by Neshitha Korrapati** *PGDM Student (Finance & Analytics)* www.linkedin.com/in/neshitha-korrapati | neshitha.kc@gmail.com 
