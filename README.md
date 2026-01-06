@@ -4,7 +4,7 @@
 ## Project Motivation
 As a **PGDM student specializing in Finance & Analytics**, I have spent significant time studying the theoretical frameworks of wealth creation and the Time Value of Money (TVM). However, I believe that true understanding comes from "opening the hood" and building these systems from scratch.
 
-**The Wealth Blueprint** is a personal project born out of a desire to move beyond standard spreadsheet calculations. My goal was to explore the backend logic of financial tools—understanding how to translate complex variables like annual step-ups, shifting tax regimes and inflation-adjusted CAGR into a functional, user-centric application.
+**The Wealth Blueprint** is a personal project born out of a desire to move beyond standard spreadsheet calculations. My goal was to explore the backend logic of financial tools, understanding how to translate complex variables like annual step-ups, shifting tax regimes and inflation-adjusted CAGR into a functional, user-centric application.
 
 ## Financial Logic Implemented
 This simulator is designed to reflect the real-world nuances of the Indian financial landscape. Key logical components include:
