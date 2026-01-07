@@ -214,8 +214,8 @@ st.markdown("""
     }
     
     button[data-baseweb="tab"] div p {
-        font-size: 1.5rem !important; /* Much Bigger */
-        font-weight: 800 !important;  /* Extra Bold */
+        font-size: 1.3rem !important; /* Much Bigger */
+        font-weight: 700 !important;  /* Extra Bold */
         color: #e2e8f0 !important;    /* Light Grey Text */
     }
     
