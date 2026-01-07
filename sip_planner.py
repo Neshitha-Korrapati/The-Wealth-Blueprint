@@ -92,13 +92,13 @@ st.markdown("""
         border-radius: 10px;
         padding: 1.5rem;
         text-align: center;
-        border: 1px solid #334155;
+        border: 1px solid #7f1d1d; /* <--- The Red Border */
         transition: all 0.3s ease;
     }
     
     .metric-card:hover {
-        border-color: #3b82f6;
-        box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+        border-color: #dc2626; /* <--- Brighter Red on Hover */
+        box-shadow: 0 4px 16px rgba(220, 38, 38, 0.2); /* Red Glow */
         transform: translateY(-2px);
     }
     
