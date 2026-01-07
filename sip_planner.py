@@ -509,49 +509,50 @@ with tab1:
     if total_alloc != 100:
         st.warning(f"⚠️ Total Allocation is {total_alloc}%. Please adjust to 100%.")
    
-    # --- NEW: Strategy Decoder (Rendered Correctly) ---
+   
+    # --- Strategy Decoder (Fixed Indentation) ---
     st.markdown("<br>", unsafe_allow_html=True)
     with st.expander("💡 Strategy Logic: The 'Why' Behind Your Portfolio"):
         st.markdown("""
-            <div style='color: #e0e7ff; font-size: 0.95rem; line-height: 1.6;'>
-                <p>This planner uses a <b>Strategic Asset Allocation (SAA)</b> model. Instead of random selection, we structure your portfolio into three functional "buckets" based on your risk profile:</p>
-                
-                <div style='margin-bottom: 15px; border-left: 3px solid #9ca3af; padding-left: 10px;'>
-                    <h5 style='color: #9ca3af; margin: 0;'>🛡️ Bucket 1: Defensive Assets (Debt & Gold)</h5>
-                    <p style='margin: 5px 0 0 0;'>
-                        <b>The Logic:</b> These are your "safety brakes." They protect your capital during market crashes.<br>
-                        <b>Allocation Strategy:</b>
-                        <br>• <b>Conservative:</b> High allocation (<b>70%</b>) to prioritize safety over growth.
-                        <br>• <b>Balanced:</b> Moderate allocation (<b>40%</b>) to provide a cushion while allowing growth.
-                        <br>• <b>Aggressive:</b> Low allocation (<b>15%</b>) as the focus is purely on maximizing returns.<br>
-                        <b>Expected Return:</b> <span style='color: #9ca3af'><b>~8% - 11%</b></span> (Lower risk = Lower return)
-                    </p>
-                </div>
+<div style='color: #e0e7ff; font-size: 0.95rem; line-height: 1.6;'>
+<p>This planner uses a <b>Strategic Asset Allocation (SAA)</b> model. Instead of random selection, we structure your portfolio into three functional "buckets" based on your risk profile:</p>
 
-                <div style='margin-bottom: 15px; border-left: 3px solid #3b82f6; padding-left: 10px;'>
-                    <h5 style='color: #3b82f6; margin: 0;'>⚓ Bucket 2: Core Equity (Large Cap / Nifty 50)</h5>
-                    <p style='margin: 5px 0 0 0;'>
-                        <b>The Logic:</b> This is your "engine." It consists of India's top 100 established companies that provide reliable, steady growth.<br>
-                        <b>Allocation Strategy:</b>
-                        <br>• <b>Balanced:</b> Highest allocation (<b>30%</b>) here to act as the primary stabilizer.
-                        <br>• <b>Conservative/Aggressive:</b> Slightly lower (<b>20-25%</b>) as they lean heavily towards either Safety or Alpha.<br>
-                        <b>Expected Return:</b> <span style='color: #3b82f6'><b>~13% - 14%</b></span> (Moderate risk = Moderate return)
-                    </p>
-                </div>
+<div style='margin-bottom: 15px; border-left: 3px solid #9ca3af; padding-left: 10px;'>
+<h5 style='color: #9ca3af; margin: 0;'>🛡️ Bucket 1: Defensive Assets (Debt & Gold)</h5>
+<p style='margin: 5px 0 0 0;'>
+<b>The Logic:</b> These are your "safety brakes." They protect your capital during market crashes.<br>
+<b>Allocation Strategy:</b>
+<br>• <b>Conservative:</b> High allocation (<b>70%</b>) to prioritize safety over growth.
+<br>• <b>Balanced:</b> Moderate allocation (<b>40%</b>) to provide a cushion while allowing growth.
+<br>• <b>Aggressive:</b> Low allocation (<b>15%</b>) as the focus is purely on maximizing returns.<br>
+<b>Expected Return:</b> <span style='color: #9ca3af'><b>~8% - 11%</b></span> (Lower risk = Lower return)
+</p>
+</div>
 
-                <div style='margin-bottom: 0px; border-left: 3px solid #10b981; padding-left: 10px;'>
-                    <h5 style='color: #10b981; margin: 0;'>🚀 Bucket 3: Alpha Generators (Mid & Small Cap)</h5>
-                    <p style='margin: 5px 0 0 0;'>
-                        <b>The Logic:</b> This is your "accelerator." These are emerging companies that offer huge growth potential but come with higher volatility.<br>
-                        <b>Allocation Strategy:</b>
-                        <br>• <b>Aggressive:</b> Heavy allocation (<b>60%</b>) to maximize long-term compounding.
-                        <br>• <b>Balanced:</b> Moderate exposure (<b>30%</b>) to boost returns without excessive risk.
-                        <br>• <b>Conservative:</b> Minimal exposure (<b>10%</b>) to limit volatility.<br>
-                        <b>Expected Return:</b> <span style='color: #10b981'><b>~16% - 20%</b></span> (Higher risk = Higher return)
-                    </p>
-                </div>
-            </div>
-        """, unsafe_allow_html=True)
+<div style='margin-bottom: 15px; border-left: 3px solid #3b82f6; padding-left: 10px;'>
+<h5 style='color: #3b82f6; margin: 0;'>⚓ Bucket 2: Core Equity (Large Cap / Nifty 50)</h5>
+<p style='margin: 5px 0 0 0;'>
+<b>The Logic:</b> This is your "engine." It consists of India's top 100 established companies that provide reliable, steady growth.<br>
+<b>Allocation Strategy:</b>
+<br>• <b>Balanced:</b> Highest allocation (<b>30%</b>) here to act as the primary stabilizer.
+<br>• <b>Conservative/Aggressive:</b> Slightly lower (<b>20-25%</b>) as they lean heavily towards either Safety or Alpha.<br>
+<b>Expected Return:</b> <span style='color: #3b82f6'><b>~13% - 14%</b></span> (Moderate risk = Moderate return)
+</p>
+</div>
+
+<div style='margin-bottom: 0px; border-left: 3px solid #10b981; padding-left: 10px;'>
+<h5 style='color: #10b981; margin: 0;'>🚀 Bucket 3: Alpha Generators (Mid & Small Cap)</h5>
+<p style='margin: 5px 0 0 0;'>
+<b>The Logic:</b> This is your "accelerator." These are emerging companies that offer huge growth potential but come with higher volatility.<br>
+<b>Allocation Strategy:</b>
+<br>• <b>Aggressive:</b> Heavy allocation (<b>60%</b>) to maximize long-term compounding.
+<br>• <b>Balanced:</b> Moderate exposure (<b>30%</b>) to boost returns without excessive risk.
+<br>• <b>Conservative:</b> Minimal exposure (<b>10%</b>) to limit volatility.<br>
+<b>Expected Return:</b> <span style='color: #10b981'><b>~16% - 20%</b></span> (Higher risk = Higher return)
+</p>
+</div>
+</div>
+""", unsafe_allow_html=True)
 
 with tab2:
     # Calculate weighted return based on user sliders
