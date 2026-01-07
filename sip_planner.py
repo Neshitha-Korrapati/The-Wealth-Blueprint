@@ -65,14 +65,14 @@ st.markdown("""
         margin-top: 0.5rem;
     }
     
-    /* Section Cards */
+    /* Section Cards (Black with Red Border) */
     .section-card {
-        background-color: #262730;
+        background-color: #0f0f0f; /* Very dark grey, almost black */
         border-radius: 12px;
         padding: 2rem;
         margin-bottom: 2rem;
-        border: 1px solid #7f1d1d;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        border: 1px solid #7f1d1d; /* Dark Red border */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
     
     .section-title {
@@ -81,8 +81,9 @@ st.markdown("""
         font-weight: 700;
         margin-bottom: 1.5rem;
         padding-bottom: 0.8rem;
-        border-bottom: 2px solid #3b82f6;
-        border-left: 5px solid #dc2626;
+        border-bottom: 2px solid #333333;
+        border-left: 5px solid #dc2626; /* The Vertical Red Line */
+        padding-left: 1.5rem; /* Added Space between line and text */
     }
     
     /* Metric Cards */
@@ -367,7 +368,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3 = st.columns(3)
 
 with col1:
     st.markdown('<p class="input-label">Monthly SIP Amount (₹)</p>', unsafe_allow_html=True)
@@ -405,10 +406,6 @@ with col3:
     )
     st.markdown(f'<p class="input-value">{stepup_percent}%</p>', unsafe_allow_html=True)
 
-with col4:
-    st.markdown('<p class="input-label">Live Data</p>', unsafe_allow_html=True)
-    live_data = st.checkbox("Enable Real-time Sync", value=False)
-    st.markdown(f'<p class="input-value">{"Sync: 05:29" if live_data else "Static Mode"}</p>', unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
@@ -426,20 +423,19 @@ with tab1:
     tooltips = {
         "Debt": "Low-risk funds that lend money to the government/companies. Acts as a safety net.",
         "Gold": "Invests in physical gold prices. Protects value during inflation or market panic.",
-        "Large": "Top 100 established companies. Stable growth with moderate risk.",
+        "Large": "Top 100 established companies (Nifty 50). Stable growth with moderate risk.",
         "Mid": "Medium-sized growing companies. Higher growth potential than large caps but riskier.",
         "Small": "Small, emerging companies. Highest growth potential but very volatile (risky)."
     }
 
-    # --- 1. Risk Profile Buttons (Active Highlight Logic) ---
+    # --- 1. Risk Profile Buttons ---
     col_r1, col_r2, col_r3 = st.columns(3)
     
-    # We check session state to decide which button gets the "Red/Primary" highlight
     with col_r1:
         if st.button("🛡️ Conservative", use_container_width=True, key="btn_con", 
                      type="primary" if st.session_state.selected_risk == "Conservative" else "secondary"):
             st.session_state.selected_risk = "Conservative"
-            st.rerun() # Force reload to apply red color immediately
+            st.rerun()
             
     with col_r2:
         if st.button("⚖️ Balanced", use_container_width=True, key="btn_bal", 
@@ -453,16 +449,16 @@ with tab1:
             st.session_state.selected_risk = "Aggressive"
             st.rerun()
 
-    # Get Data for selected profile
+    # Get Data
     profile_data = RISK_PROFILES[st.session_state.selected_risk]
     allocs = profile_data["allocations"]
     rets = profile_data["returns"]
     
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # --- CLASS I: DEFENSIVE ASSETS ---
+    # --- CLASS I: DEFENSIVE ASSETS (Green Header) ---
     st.markdown(f"""
-        <div style='background-color: #1a1a1a; padding: 10px 15px; border-radius: 8px; border-left: 4px solid #9ca3af; margin-bottom: 15px;'>
+        <div style='background-color: #064e3b; padding: 12px 15px; border-radius: 8px; border-left: 5px solid #34d399; margin-bottom: 15px;'>
             <h4 style='color: white; margin:0;'>🛡️ I. Defensive Assets (Safety & Cushioning)</h4>
         </div>
     """, unsafe_allow_html=True)
@@ -470,27 +466,29 @@ with tab1:
     col_def1, col_def2 = st.columns(2)
     with col_def1:
         st.markdown('<p class="input-label">Debt Mutual Funds</p>', unsafe_allow_html=True)
-        debt_pct = st.slider("debt_slider", 0, 100, allocs["Debt MF"], key="s_debt", help=tooltips["Debt"])
-        st.markdown(f'<p style="font-size:0.9rem; color:#9ca3af; margin-top:-5px;">(Suggested: <b style="color:#3b82f6">{allocs["Debt MF"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Debt MF"]*100:.1f}%</b>)</p>', unsafe_allow_html=True)
+        debt_pct = st.slider("debt_slider", 0, 100, allocs["Debt MF"], key="s_debt", help=tooltips["Debt"], label_visibility="collapsed")
+        # Text Size Increased to 1.3rem
+        st.markdown(f'<p style="font-size:1.3rem; font-weight:700; color:#ffffff; margin-top:-10px;">{debt_pct}% <span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Debt MF"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Debt MF"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
+
     with col_def2:
         st.markdown('<p class="input-label">Gold ETFs</p>', unsafe_allow_html=True)
-        gold_pct = st.slider("gold_slider", 0, 100, allocs["Gold ETF"], key="s_gold", help=tooltips["Gold"])
-        st.markdown(f'<p style="font-size:0.9rem; color:#9ca3af; margin-top:-5px;">(Suggested: <b style="color:#3b82f6">{allocs["Gold ETF"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Gold ETF"]*100:.1f}%</b>)</p>', unsafe_allow_html=True)
+        gold_pct = st.slider("gold_slider", 0, 100, allocs["Gold ETF"], key="s_gold", help=tooltips["Gold"], label_visibility="collapsed")
+        st.markdown(f'<p style="font-size:1.3rem; font-weight:700; color:#ffffff; margin-top:-10px;">{gold_pct}% <span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Gold ETF"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Gold ETF"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
 
-    # --- CLASS II: CORE EQUITY ---
+    # --- CLASS II: CORE EQUITY (Blue Header) ---
     st.markdown(f"""
-        <div style='background-color: #1a1a1a; padding: 10px 15px; border-radius: 8px; border-left: 4px solid #3b82f6; margin-top: 20px; margin-bottom: 15px;'>
+        <div style='background-color: #172554; padding: 12px 15px; border-radius: 8px; border-left: 5px solid #60a5fa; margin-top: 25px; margin-bottom: 15px;'>
             <h4 style='color: white; margin:0;'>⚓ II. Core Equity (Stability)</h4>
         </div>
     """, unsafe_allow_html=True)
     
-    st.markdown('<p class="input-label">Large Cap</p>', unsafe_allow_html=True)
-    large_pct = st.slider("large_slider", 0, 100, allocs["Large Cap"], key="s_large", help=tooltips["Large"])
-    st.markdown(f'<p style="font-size:0.9rem; color:#9ca3af; margin-top:-5px;">(Suggested: <b style="color:#3b82f6">{allocs["Large Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Large Cap"]*100:.1f}%</b>)</p>', unsafe_allow_html=True)
-   
-    # --- CLASS III: ALPHA GENERATORS ---
+    st.markdown('<p class="input-label">Large Cap (Nifty 50)</p>', unsafe_allow_html=True)
+    large_pct = st.slider("large_slider", 0, 100, allocs["Large Cap"], key="s_large", help=tooltips["Large"], label_visibility="collapsed")
+    st.markdown(f'<p style="font-size:1.3rem; font-weight:700; color:#ffffff; margin-top:-10px;">{large_pct}% <span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Large Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Large Cap"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
+
+    # --- CLASS III: ALPHA GENERATORS (Mustard Yellow Header) ---
     st.markdown(f"""
-        <div style='background-color: #1a1a1a; padding: 10px 15px; border-radius: 8px; border-left: 4px solid #10b981; margin-top: 20px; margin-bottom: 15px;'>
+        <div style='background-color: #713f12; padding: 12px 15px; border-radius: 8px; border-left: 5px solid #facc15; margin-top: 25px; margin-bottom: 15px;'>
             <h4 style='color: white; margin:0;'>🚀 III. Alpha Generators (High Growth)</h4>
         </div>
     """, unsafe_allow_html=True)
@@ -498,16 +496,18 @@ with tab1:
     col_alp1, col_alp2 = st.columns(2)
     with col_alp1:
         st.markdown('<p class="input-label">Mid Cap Funds</p>', unsafe_allow_html=True)
-        mid_pct = st.slider("mid_slider", 0, 100, allocs["Mid Cap"], key="s_mid", help=tooltips["Mid"])
-        st.markdown(f'<p style="font-size:0.9rem; color:#9ca3af; margin-top:-5px;">(Suggested: <b style="color:#3b82f6">{allocs["Mid Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Mid Cap"]*100:.1f}%</b>)</p>', unsafe_allow_html=True)
+        mid_pct = st.slider("mid_slider", 0, 100, allocs["Mid Cap"], key="s_mid", help=tooltips["Mid"], label_visibility="collapsed")
+        st.markdown(f'<p style="font-size:1.3rem; font-weight:700; color:#ffffff; margin-top:-10px;">{mid_pct}% <span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Mid Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Mid Cap"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
     with col_alp2:
         st.markdown('<p class="input-label">Small Cap Funds</p>', unsafe_allow_html=True)
-        small_pct = st.slider("small_slider", 0, 100, allocs["Small Cap"], key="s_small", help=tooltips["Small"])
-        st.markdown(f'<p style="font-size:0.9rem; color:#9ca3af; margin-top:-5px;">(Suggested: <b style="color:#3b82f6">{allocs["Small Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Small Cap"]*100:.1f}%</b>)</p>', unsafe_allow_html=True)
+        small_pct = st.slider("small_slider", 0, 100, allocs["Small Cap"], key="s_small", help=tooltips["Small"], label_visibility="collapsed")
+        st.markdown(f'<p style="font-size:1.3rem; font-weight:700; color:#ffffff; margin-top:-10px;">{small_pct}% <span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Small Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Small Cap"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
+
     # Check Total
     total_alloc = debt_pct + gold_pct + large_pct + mid_pct + small_pct
     if total_alloc != 100:
         st.warning(f"⚠️ Total Allocation is {total_alloc}%. Please adjust to 100%.")
+
    
     # --- Strategy Decoder (Risk Profile Perspective) ---
     st.markdown("<br>", unsafe_allow_html=True)
