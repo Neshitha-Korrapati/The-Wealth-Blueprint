@@ -423,7 +423,7 @@ with tab1:
     tooltips = {
         "Debt": "Low-risk funds that lend money to the government/companies. Acts as a safety net.",
         "Gold": "Invests in physical gold prices. Protects value during inflation or market panic.",
-        "Large": "Top 100 established companies (Nifty 50). Stable growth with moderate risk.",
+        "Large": "Top 100 established companies. Stable growth with moderate risk.",
         "Mid": "Medium-sized growing companies. Higher growth potential than large caps but riskier.",
         "Small": "Small, emerging companies. Highest growth potential but very volatile (risky)."
     }
@@ -468,13 +468,13 @@ with tab1:
         st.markdown('<p class="input-label">Debt Mutual Funds</p>', unsafe_allow_html=True)
         debt_pct = st.slider("", 0, 100, allocs["Debt MF"], key="s_debt", help=tooltips["Debt"], label_visibility="collapsed")
         # Text Size Increased to 1.3rem
-        st.markdown(f'<p style="font-size:1.5rem; font-weight:700; color:#ffffff; margin-top:-10px;">{debt_pct}% <span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Debt MF"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Debt MF"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
-
+        st.markdown(f'<p style="margin-top:-5px;"><span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Debt MF"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Debt MF"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
+        
     with col_def2:
         st.markdown('<p class="input-label">Gold ETFs</p>', unsafe_allow_html=True)
         gold_pct = st.slider("", 0, 100, allocs["Gold ETF"], key="s_gold", help=tooltips["Gold"], label_visibility="collapsed")
-        st.markdown(f'<p style="font-size:1.5rem; font-weight:700; color:#ffffff; margin-top:-10px;">{gold_pct}% <span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Gold ETF"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Gold ETF"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
-
+        st.markdown(f'<p style="margin-top:-5px;"><span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Gold ETF"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Gold ETF"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
+        
     # --- CLASS II: CORE EQUITY (Blue Header) ---
     st.markdown(f"""
         <div style='background-color: #172554; padding: 12px 15px; border-radius: 8px; border-left: 5px solid #60a5fa; margin-top: 25px; margin-bottom: 15px;'>
@@ -482,10 +482,10 @@ with tab1:
         </div>
     """, unsafe_allow_html=True)
     
-    st.markdown('<p class="input-label">Large Cap (Nifty 50)</p>', unsafe_allow_html=True)
+    st.markdown('<p class="input-label">Large Cap </p>', unsafe_allow_html=True)
     large_pct = st.slider("", 0, 100, allocs["Large Cap"], key="s_large", help=tooltips["Large"], label_visibility="collapsed")
-    st.markdown(f'<p style="font-size:1.5rem; font-weight:700; color:#ffffff; margin-top:-10px;">{large_pct}% <span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Large Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Large Cap"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
-
+    st.markdown(f'<p style="margin-top:-5px;"><span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Large Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Large Cap"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
+    
     # --- CLASS III: ALPHA GENERATORS (Mustard Yellow Header) ---
     st.markdown(f"""
         <div style='background-color: #713f12; padding: 12px 15px; border-radius: 8px; border-left: 5px solid #facc15; margin-top: 25px; margin-bottom: 15px;'>
@@ -497,12 +497,13 @@ with tab1:
     with col_alp1:
         st.markdown('<p class="input-label">Mid Cap Funds</p>', unsafe_allow_html=True)
         mid_pct = st.slider("", 0, 100, allocs["Mid Cap"], key="s_mid", help=tooltips["Mid"], label_visibility="collapsed")
-        st.markdown(f'<p style="font-size:1.5rem; font-weight:700; color:#ffffff; margin-top:-10px;">{mid_pct}% <span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Mid Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Mid Cap"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
+        st.markdown(f'<p style="margin-top:-5px;"><span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Mid Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Mid Cap"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
+        
     with col_alp2:
         st.markdown('<p class="input-label">Small Cap Funds</p>', unsafe_allow_html=True)
         small_pct = st.slider("", 0, 100, allocs["Small Cap"], key="s_small", help=tooltips["Small"], label_visibility="collapsed")
-        st.markdown(f'<p style="font-size:1.5rem; font-weight:700; color:#ffffff; margin-top:-10px;">{small_pct}% <span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Small Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Small Cap"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
-
+        st.markdown(f'<p style="margin-top:-5px;"><span style="font-size:0.9rem; color:#9ca3af; font-weight:400;">(Suggested: <b style="color:#3b82f6">{allocs["Small Cap"]}%</b> | Expected Return: <b style="color:#3b82f6">{rets["Small Cap"]*100:.1f}%</b>)</span></p>', unsafe_allow_html=True)
+        
     # Check Total
     total_alloc = debt_pct + gold_pct + large_pct + mid_pct + small_pct
     if total_alloc != 100:
