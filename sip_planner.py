@@ -244,14 +244,14 @@ st.markdown("""
     .stDownloadButton > button:hover {
         background-color: #2563eb;
     }
-    
+
     /* Increase Size of Slider Value (The floating number on the handle) */
     div[data-testid="stThumbValue"] {
-        font-size: 1.8rem !important; /* Significantly bigger */
-        font-weight: 800 !important;  /* Extra Bold */
-        padding-bottom: 5px !important; /* Little space */
-    </style>
+        font-size: 1.8rem !important; 
+        font-weight: 800 !important;
+        padding-bottom: 5px !important; 
     }
+    </style>
 """, unsafe_allow_html=True)
 
 # Financial Constants
