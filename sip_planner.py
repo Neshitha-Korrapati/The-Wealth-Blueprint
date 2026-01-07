@@ -426,7 +426,7 @@ with tab1:
     tooltips = {
         "Debt": "Low-risk funds that lend money to the government/companies. Acts as a safety net.",
         "Gold": "Invests in physical gold prices. Protects value during inflation or market panic.",
-        "Large": "Top 100 established companies (Nifty 50). Stable growth with moderate risk.",
+        "Large": "Top 100 established companies. Stable growth with moderate risk.",
         "Mid": "Medium-sized growing companies. Higher growth potential than large caps but riskier.",
         "Small": "Small, emerging companies. Highest growth potential but very volatile (risky)."
     }
@@ -509,46 +509,43 @@ with tab1:
     if total_alloc != 100:
         st.warning(f"⚠️ Total Allocation is {total_alloc}%. Please adjust to 100%.")
    
-   
-    # --- Strategy Decoder (Fixed Indentation) ---
+    # --- Strategy Decoder (Risk Profile Perspective) ---
     st.markdown("<br>", unsafe_allow_html=True)
-    with st.expander("💡 Strategy Logic: The 'Why' Behind Your Portfolio"):
+    with st.expander("💡 Strategy Logic: Understanding Your Profile"):
         st.markdown("""
 <div style='color: #e0e7ff; font-size: 0.95rem; line-height: 1.6;'>
-<p>This planner uses a <b>Strategic Asset Allocation (SAA)</b> model. Instead of random selection, we structure your portfolio into three functional "buckets" based on your risk profile:</p>
-
-<div style='margin-bottom: 15px; border-left: 3px solid #9ca3af; padding-left: 10px;'>
-<h5 style='color: #9ca3af; margin: 0;'>🛡️ Bucket 1: Defensive Assets (Debt & Gold)</h5>
-<p style='margin: 5px 0 0 0;'>
-<b>The Logic:</b> These are your "safety brakes." They protect your capital during market crashes.<br>
-<b>Allocation Strategy:</b>
-<br>• <b>Conservative:</b> High allocation (<b>70%</b>) to prioritize safety over growth.
-<br>• <b>Balanced:</b> Moderate allocation (<b>40%</b>) to provide a cushion while allowing growth.
-<br>• <b>Aggressive:</b> Low allocation (<b>15%</b>) as the focus is purely on maximizing returns.<br>
-<b>Expected Return:</b> <span style='color: #9ca3af'><b>~8% - 11%</b></span> (Lower risk = Lower return)
-</p>
-</div>
+<p>This planner creates a custom <b>Strategic Asset Allocation</b> for you. Instead of a one-size-fits-all approach, we tailor the asset mix to match your financial personality. Here is the logic behind each profile:</p>
 
 <div style='margin-bottom: 15px; border-left: 3px solid #3b82f6; padding-left: 10px;'>
-<h5 style='color: #3b82f6; margin: 0;'>⚓ Bucket 2: Core Equity (Large Cap / Nifty 50)</h5>
+<h5 style='color: #3b82f6; margin: 0;'>🛡️ The Conservative Strategy (Safety First)</h5>
 <p style='margin: 5px 0 0 0;'>
-<b>The Logic:</b> This is your "engine." It consists of India's top 100 established companies that provide reliable, steady growth.<br>
-<b>Allocation Strategy:</b>
-<br>• <b>Balanced:</b> Highest allocation (<b>30%</b>) here to act as the primary stabilizer.
-<br>• <b>Conservative/Aggressive:</b> Slightly lower (<b>20-25%</b>) as they lean heavily towards either Safety or Alpha.<br>
-<b>Expected Return:</b> <span style='color: #3b82f6'><b>~13% - 14%</b></span> (Moderate risk = Moderate return)
+<b>The Philosophy:</b> The primary goal here is <b>Capital Preservation</b>. We prioritize protecting your principal amount over chasing high returns. This is ideal for investors with a lower risk appetite or shorter time horizons.<br>
+<b>Suggested Allocation:</b>
+<br>• <b>70% Defensive Assets:</b> (60% Debt + 10% Gold). Acts as a strong "anchor," ensuring stability even if markets fall.
+<br>• <b>30% Equity Exposure:</b> (20% Large Cap + 10% Mid Cap). A small portion to help your money grow slightly faster than inflation.
+<br><b>Expected Return:</b> <span style='color: #3b82f6'><b>~9.0% - 10.5%</b></span> (Focus on Stability)
 </p>
 </div>
 
-<div style='margin-bottom: 0px; border-left: 3px solid #10b981; padding-left: 10px;'>
-<h5 style='color: #10b981; margin: 0;'>🚀 Bucket 3: Alpha Generators (Mid & Small Cap)</h5>
+<div style='margin-bottom: 15px; border-left: 3px solid #f59e0b; padding-left: 10px;'>
+<h5 style='color: #f59e0b; margin: 0;'>⚖️ The Balanced Strategy (Growth + Stability)</h5>
 <p style='margin: 5px 0 0 0;'>
-<b>The Logic:</b> This is your "accelerator." These are emerging companies that offer huge growth potential but come with higher volatility.<br>
-<b>Allocation Strategy:</b>
-<br>• <b>Aggressive:</b> Heavy allocation (<b>60%</b>) to maximize long-term compounding.
-<br>• <b>Balanced:</b> Moderate exposure (<b>30%</b>) to boost returns without excessive risk.
-<br>• <b>Conservative:</b> Minimal exposure (<b>10%</b>) to limit volatility.<br>
-<b>Expected Return:</b> <span style='color: #10b981'><b>~16% - 20%</b></span> (Higher risk = Higher return)
+<b>The Philosophy:</b> This approach seeks the <b>"Golden Mean."</b> It aims to generate significant wealth while maintaining a safety cushion. It is designed for investors who want growth but cannot stomach sharp drops in portfolio value.<br>
+<b>Suggested Allocation:</b>
+<br>• <b>40% Defensive Assets:</b> (30% Debt + 10% Gold). Enough to absorb market shocks and reduce anxiety during downturns.
+<br>• <b>60% Equity Exposure:</b> (30% Large Cap + 30% Alpha Generators). A majority allocation to stocks drives wealth creation, split evenly to optimize the risk-reward ratio.
+<br><b>Expected Return:</b> <span style='color: #f59e0b'><b>~12.0% - 13.5%</b></span> (Moderate Growth)
+</p>
+</div>
+
+<div style='margin-bottom: 0px; border-left: 3px solid #dc2626; padding-left: 10px;'>
+<h5 style='color: #dc2626; margin: 0;'>🚀 The Aggressive Strategy (Max Compounding)</h5>
+<p style='margin: 5px 0 0 0;'>
+<b>The Philosophy:</b> The focus here is purely <b>Wealth Maximization</b>. This strategy accepts high short-term volatility in exchange for potentially superior long-term returns. It is best suited for long tenures (10+ years) where time can smooth out market bumps.<br>
+<b>Suggested Allocation:</b>
+<br>• <b>15% Defensive Assets:</b> (10% Debt + 5% Gold). A minimal safety net, kept only for liquidity.
+<br>• <b>85% Equity Exposure:</b> (25% Large Cap + 60% Alpha Generators). The portfolio is heavily skewed towards high-growth assets. We aggressively target wealth multiplication, understanding that the ride may be volatile.
+<br><b>Expected Return:</b> <span style='color: #dc2626'><b>~15.0% - 17.0%</b></span> (High Growth Potential)
 </p>
 </div>
 </div>
