@@ -862,7 +862,7 @@ for col in ['Monthly SIP', 'Total Invested', 'Total Wealth', 'Wealth Gain']:
 # --- Styled Dataframe (Blue & Grey Theme + Bigger Font) ---
 def highlight_rows(row):
     # CSS for the rows: Dark Grey Background + White Text + Bigger Font
-    return ['background-color: #0d0d66; color: white; font-size: 1.2rem; font-family: Inter; border-bottom: 1px solid #0d0d66'] * len(row)
+    return ['background-color: #10274d; color: white; font-size: 1.2rem; font-family: Inter; border-bottom: 1px solid ##172554'] * len(row)
 
 # Apply styles
 styled_df = display_data.style.apply(highlight_rows, axis=1)\
