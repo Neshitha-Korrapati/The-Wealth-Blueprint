@@ -207,12 +207,14 @@ st.markdown("""
         margin: 0;
     }
     
-    /* Tab Styling */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
-        background-color: #1e293b;
-        border-radius: 8px;
-        padding: 0.5rem;
+   /* Tab Styling - Updated for Bigger & Bold Text */
+    .stTabs [data-baseweb="tab"] {
+        background-color: transparent;
+        color: #94a3b8;
+        border-radius: 6px;
+        padding: 1.0rem 2rem; /* Increased padding for better look */
+        font-size: 1.3rem;    /* <--- INCREASED FONT SIZE */
+        font-weight: 700;     /* <--- BOLD TEXT */
     }
     
     .stTabs [data-baseweb="tab"] {
@@ -592,7 +594,7 @@ with tab2:
     # Inflation adjustment
     st.markdown('<p class="input-label">Expected Inflation Rate (%)</p>', unsafe_allow_html=True)
     inflation_rate = st.slider("inflation_slider", 0.0, 15.0, 6.0, 0.5, label_visibility="collapsed")
-    st.markdown(f'<p class="input-value">{inflation_rate}% Annual Inflation</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="font-size: 1.5rem; font-weight: 700; color: #3b82f6; margin-top: 5px;">{inflation_rate}% Annual Inflation</p>', unsafe_allow_html=True)
     
     real_value = calculate_inflation_adjusted(final_wealth, inflation_rate, tenure_years)
     
@@ -600,7 +602,6 @@ with tab2:
     ltcg_tax = calculate_ltcg_tax(final_returns)
     post_tax_wealth = final_wealth - ltcg_tax
     
-    # Top Metrics
     # Top Metrics
     st.markdown("<br><br>", unsafe_allow_html=True)
     
