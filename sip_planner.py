@@ -29,7 +29,7 @@ st.markdown("""
     }
     
     .stApp {
-        background-color: #0E1117;
+        background-color: #000000;
     }
     
     /* Main Container */
@@ -41,7 +41,8 @@ st.markdown("""
     
     /* Header */
     .app-header {
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        background: linear-gradient(135deg, #000000 0%, #7f1d1d 100%);
+        border: 1px solid #dc2626;
         padding: 2rem;
         border-radius: 12px;
         margin-bottom: 2rem;
@@ -70,7 +71,7 @@ st.markdown("""
         border-radius: 12px;
         padding: 2rem;
         margin-bottom: 2rem;
-        border: 1px solid #3f3f46;
+        border: 1px solid #7f1d1d;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
     
@@ -81,6 +82,7 @@ st.markdown("""
         margin-bottom: 1.5rem;
         padding-bottom: 0.8rem;
         border-bottom: 2px solid #3b82f6;
+        border-left: 5px solid #dc2626;
     }
     
     /* Metric Cards */
@@ -100,16 +102,17 @@ st.markdown("""
     }
     
     .metric-label {
-        color: #94a3b8;
+        color: #ffffff;
         font-size: 0.85rem;
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 0.8rem;
     }
     
     .metric-value {
-        color: #3b82f6;
+        color: #ffffff;
+        text-shadow: 0 0 10px rgba (220, 38, 38, 0.6);
         font-size: 2rem;
         font-weight: 700;
         margin: 0.3rem 0;
@@ -123,9 +126,9 @@ st.markdown("""
     
     /* Input Labels */
     .input-label {
-        color: #e2e8f0;
+        color: #ffffff;
         font-size: 0.9rem;
-        font-weight: 600;
+        font-weight: 700;
         margin-bottom: 0.5rem;
     }
     
@@ -193,7 +196,7 @@ st.markdown("""
         border-radius: 10px;
         padding: 1.5rem;
         margin: 2rem 0;
-        border-left: 4px solid #3b82f6;
+        border-left: 4px solid #dc2626;
     }
     
     .summary-text {
@@ -232,9 +235,9 @@ st.markdown("""
     
     /* Download Button */
     .stDownloadButton > button {
-        background-color: #3b82f6;
-        color: white;
-        border: none;
+        background-color: #000000;
+        color: #ffffff;
+        border: 1px solid #dc2626;
         border-radius: 8px;
         padding: 0.75rem 2rem;
         font-weight: 600;
@@ -399,22 +402,21 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Risk Profile Selection with Tabs
-tab1, tab2, tab3 = st.tabs(["📘 Strategy & Allocation", "📊 Projection Analysis"])
-
+tab1, tab2 = st.tabs(["Strategy & Allocation", "Projection Analysis"])
 with tab1:
     # Risk Profile Buttons
     col_r1, col_r2, col_r3 = st.columns(3)
     
     with col_r1:
-        if st.button("🛡️ Conservative", use_container_width=True, key="btn_conservative"):
+        if st.button("Conservative", use_container_width=True, key="btn_conservative"):
             st.session_state.selected_risk = "Conservative"
     
     with col_r2:
-        if st.button("⚖️ Balanced", use_container_width=True, key="btn_balanced", type="primary"):
+        if st.button("Balanced", use_container_width=True, key="btn_balanced", type="primary"):
             st.session_state.selected_risk = "Balanced"
     
     with col_r3:
-        if st.button("🚀 Aggressive", use_container_width=True, key="btn_aggressive"):
+        if st.button("Aggressive", use_container_width=True, key="btn_aggressive"):
             st.session_state.selected_risk = "Aggressive"
     
     st.markdown(f"""
@@ -543,19 +545,20 @@ with tab2:
         """, unsafe_allow_html=True)
     
     st.markdown("<br>", unsafe_allow_html=True)
-    
+
     # Visualizations
     viz_col1, viz_col2 = st.columns([1, 1])
     
     with viz_col1:
         st.markdown('<h3 style="color: #ffffff; margin-bottom: 1rem;">Portfolio Mix</h3>', unsafe_allow_html=True)
         
-        # Donut Chart
+        # Donut Chart - Emerald Green & Grey Theme
         fig_donut = go.Figure(data=[go.Pie(
             labels=['Debt MF', 'Flexi Cap', 'Mid Cap', 'Small Cap'],
             values=[debt_alloc*100, equity_alloc*50, 20, 10],
             hole=0.6,
-            marker=dict(colors=['#60a5fa', '#3b82f6', '#2563eb', '#1e40af']),
+            # COLORS: Grey for Debt, Shades of Emerald for Equity
+            marker=dict(colors=['#d1d5db', '#10b981', '#34d399', '#6ee7b7']),
             textinfo='label+percent',
             textfont=dict(size=14, color='#ffffff'),
             hovertemplate='<b>%{label}</b><br>%{value:.0f}%<br>₹%{value:,.0f}<extra></extra>'
@@ -563,26 +566,24 @@ with tab2:
         
         fig_donut.update_layout(
             template='plotly_dark',
-            paper_bgcolor='#262730',
-            plot_bgcolor='#262730',
+            paper_bgcolor='rgba(0,0,0,0)', # Transparent to blend with card
+            plot_bgcolor='rgba(0,0,0,0)',
             height=400,
             showlegend=True,
             legend=dict(
                 orientation="v",
-                yanchor="middle",
-                y=0.5,
-                xanchor="left",
-                x=1.1,
+                yanchor="middle", y=0.5,
+                xanchor="left", x=1.0,
                 font=dict(color='#e2e8f0', size=12)
             ),
             annotations=[dict(
                 text=f'<b>Portfolio<br>Mix</b>',
                 x=0.5, y=0.5,
                 font_size=16,
-                font_color='#3b82f6',
+                font_color='#10b981', # Emerald Text
                 showarrow=False
             )],
-            margin=dict(l=20, r=120, t=20, b=20)
+            margin=dict(l=20, r=100, t=20, b=20)
         )
         
         st.plotly_chart(fig_donut, use_container_width=True)
@@ -590,36 +591,38 @@ with tab2:
     with viz_col2:
         st.markdown('<h3 style="color: #ffffff; margin-bottom: 1rem;">Growth Projection</h3>', unsafe_allow_html=True)
         
-        # Area Chart
+        # Area Chart - Emerald & Grey
         fig_growth = go.Figure()
         
+        # Trace 1: Principal (Light Grey)
         fig_growth.add_trace(go.Scatter(
             x=df_sip['Year'],
             y=df_sip['Total_Invested'],
             name='Principal',
             fill='tozeroy',
             mode='lines',
-            line=dict(color='#475569', width=2),
-            fillcolor='rgba(71, 85, 105, 0.5)',
+            line=dict(color='#9ca3af', width=1), # Light Grey Line
+            fillcolor='rgba(156, 163, 175, 0.2)', # Transparent Grey Fill
             hovertemplate='<b>Year %{x:.1f}</b><br>Principal: ₹%{y:,.0f}<extra></extra>'
         ))
         
+        # Trace 2: Wealth (Emerald Green)
         fig_growth.add_trace(go.Scatter(
             x=df_sip['Year'],
             y=df_sip['Current_Wealth'],
             name='Total Wealth',
             fill='tonexty',
             mode='lines',
-            line=dict(color='#ef4444', width=2),
-            fillcolor='rgba(239, 68, 68, 0.6)',
+            line=dict(color='#10b981', width=3), # Emerald Green Line
+            fillcolor='rgba(16, 185, 129, 0.2)', # Transparent Emerald Fill
             hovertemplate='<b>Year %{x:.1f}</b><br>Wealth: ₹%{y:,.0f}<br>Returns: ₹%{customdata:,.0f}<extra></extra>',
             customdata=df_sip['Returns']
         ))
         
         fig_growth.update_layout(
             template='plotly_dark',
-            paper_bgcolor='#262730',
-            plot_bgcolor='#262730',
+            paper_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(0,0,0,0)',
             height=400,
             xaxis_title="Years",
             yaxis_title="Amount (₹)",
@@ -627,10 +630,8 @@ with tab2:
             hovermode='x unified',
             legend=dict(
                 orientation="h",
-                yanchor="bottom",
-                y=1.02,
-                xanchor="center",
-                x=0.5
+                yanchor="bottom", y=1.02,
+                xanchor="center", x=0.5
             ),
             margin=dict(l=20, r=20, t=40, b=20)
         )
@@ -677,8 +678,8 @@ with tab2:
                 <h3 style="color: #ffffff; margin-bottom: 1rem;">💼 Tax Impact (LTCG)</h3>
                 <p style="color: #e2e8f0; margin: 0.5rem 0;">
                     <b>Gross Wealth:</b> ₹{final_wealth:,.0f}<br>
-                    <b>LTCG Tax (12.5%):</b> ₹{ltcg_tax:,.0f}<br>
-                    <b style="color: #3b82f6; font-size: 1.2rem;">Net Post-Tax Wealth:</b> ₹{post_tax_wealth:,.0f}
+                    <b>LTCG Tax (12.5%):</b> <span style="color: #ef4444;">-₹{ltcg_tax:,.0f}</span><br>
+                    <b style="color: #10b981; font-size: 1.2rem;">Net Post-Tax Wealth:</b> ₹{post_tax_wealth:,.0f}
                 </p>
             </div>
         """, unsafe_allow_html=True)
@@ -690,7 +691,7 @@ with tab2:
                 <p style="color: #e2e8f0; margin: 0.5rem 0;">
                     <b>Future Value:</b> ₹{final_wealth:,.0f}<br>
                     <b>Inflation Adjusted ({inflation_rate}%):</b><br>
-                    <b style="color: #3b82f6; font-size: 1.2rem;">Today's Value:</b> ₹{real_value:,.0f}
+                    <b style="color: #10b981; font-size: 1.2rem;">Today's Value:</b> ₹{real_value:,.0f}
                 </p>
             </div>
         """, unsafe_allow_html=True)
