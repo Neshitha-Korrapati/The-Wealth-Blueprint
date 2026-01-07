@@ -846,13 +846,16 @@ with st.expander("ℹ️ How to Read This Table? (Calculation Logic)"):
 
 # ... (Previous code remains the same until 'Year-wise Breakdown Table' section)
 
-# 1. PREPARE DATA: Filter and Reset Index to remove "11, 23, 35..."
 yearly_data = df_sip[df_sip['Month'] % 12 == 0].copy()
-yearly_data['Year'] = yearly_data['Month'] // 12
-yearly_data = yearly_data[['Year', 'Monthly SIP', 'Total Invested', 'Total Wealth', 'Wealth Gain']]
+yearly_data['Year'] = (yearly_data['Month'] // 12).astype(int)
+
+# [FIX] 1. Select the ORIGINAL column names first (Avoids KeyError)
+yearly_data = yearly_data[['Year', 'SIP_Amount', 'Total_Invested', 'Current_Wealth', 'Returns']]
+
+# [FIX] 2. Rename columns to the display names
 yearly_data.columns = ['Year', 'Monthly SIP', 'Total Invested', 'Total Wealth', 'Wealth Gain']
 
-# [CRITICAL STEP] This removes the unwanted index numbers (11, 23...)
+# [FIX] 3. Reset Index to remove the "11, 23..." row numbers
 yearly_data.reset_index(drop=True, inplace=True)
 
 # Format numbers for display (adding ₹ and commas)
@@ -860,16 +863,16 @@ display_data = yearly_data.copy()
 for col in ['Monthly SIP', 'Total Invested', 'Total Wealth', 'Wealth Gain']:
     display_data[col] = display_data[col].apply(lambda x: f"₹{x:,.0f}")
 
-# 2. DEFINE STYLING FUNCTIONS
+# Define Styling Functions
 def highlight_rows(row):
     # Standard Dark Grey for data rows
     return ['background-color: #1e293b; color: white; font-size: 1.2rem; font-family: Inter; border-bottom: 1px solid #334155'] * len(row)
 
 def highlight_year_col(col):
-    # [NEW] Dark Blue for the 'Year' column (Matches the Header color)
+    # Dark Blue for the 'Year' column (Matches the Header color)
     return ['background-color: #041759; color: white; font-size: 1.2rem; font-weight: bold; border-bottom: 1px solid #3b82f6'] * len(col)
 
-# 3. APPLY STYLES & RENDER
+# Apply Styles & Render
 styled_df = display_data.style\
     .hide(axis="index")\
     .apply(highlight_rows, axis=1)\
