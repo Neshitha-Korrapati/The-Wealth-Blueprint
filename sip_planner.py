@@ -208,19 +208,20 @@ st.markdown("""
     }
     
    /* Tab Styling - Updated for Bigger & Bold Text */
-    .stTabs [data-baseweb="tab"] {
-        background-color: transparent;
-        color: #94a3b8;
-        border-radius: 6px;
-        padding: 1.0rem 2rem; /* Increased padding for better look */
-        font-size: 1.8rem;    /* <--- INCREASED FONT SIZE */
-        font-weight: 800;     /* <--- BOLD TEXT */
-
+    /* FORCE Tab Styling - Bigger & Bold */
+    button[data-baseweb="tab"] {
+        padding: 1rem 2rem !important;
     }
     
-    .stTabs [aria-selected="true"] {
-        background-color: #3b82f6;
-        color: #ffffff;
+    button[data-baseweb="tab"] div p {
+        font-size: 1.5rem !important; /* Much Bigger */
+        font-weight: 800 !important;  /* Extra Bold */
+        color: #e2e8f0 !important;    /* Light Grey Text */
+    }
+    
+    /* Active Tab Text Color (White) */
+    button[aria-selected="true"] div p {
+        color: #ffffff !important;
     }
     
     /* DataFrame Styling */
