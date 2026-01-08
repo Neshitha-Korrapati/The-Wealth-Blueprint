@@ -430,6 +430,19 @@ with col3:
         step=1,
         label_visibility="collapsed"
     )
+with col4:
+    # MOVED HERE: Financial Goal Input
+    st.markdown('<p class="input-label">Financial Goal (₹)</p>', unsafe_allow_html=True)
+    goal_amount = st.number_input(
+        "goal_label",
+        min_value=100000,
+        max_value=100000000,
+        value=10000000,
+        step=100000,
+        label_visibility="collapsed"
+    )
+    # Added formatting to match other inputs
+    st.markdown(f'<p class="input-value">{format_indian_currency(goal_amount)}</p>', unsafe_allow_html=True)
     st.markdown(f'<p class="input-value">{stepup_percent}%</p>', unsafe_allow_html=True)
 
 
@@ -779,29 +792,22 @@ with tab2:
         st.plotly_chart(fig_growth, use_container_width=True)
     
     # Goal Analysis
+    # Goal Analysis
     st.markdown("<br>", unsafe_allow_html=True)
     
-    st.markdown('<p class="input-label">Financial Goal Target (₹)</p>', unsafe_allow_html=True)
-    goal_amount = st.number_input(
-        "goal_label",
-        min_value=100000,
-        max_value=100000000,
-        value=10000000,
-        step=100000,
-        label_visibility="collapsed"
-    )
+    # Note: goal_amount is now defined in Section 1, so we just use it here directly.
     
     years_needed = years_to_reach_goal(goal_amount, sip_amount, stepup_percent, monthly_return)
     
     if years_needed and years_needed <= 50:
         if years_needed <= tenure_years:
-            summary_text = f"✅ <b>Goal Achievable!</b> You will reach your goal of <b>₹{goal_amount/10000000:.2f} Cr</b> in approximately <b>{years_needed:.1f} years</b>. That's <b>{tenure_years - years_needed:.1f} years</b> ahead of your planned tenure!"
+            summary_text = f"✅ <b>Goal Achievable!</b> You will reach your goal of <b>{format_indian_currency(goal_amount)}</b> in approximately <b>{years_needed:.1f} years</b>. That's <b>{tenure_years - years_needed:.1f} years</b> ahead of your planned tenure!"
         else:
             extra_years = years_needed - tenure_years
-            summary_text = f"⚠️ To reach your goal of <b>₹{goal_amount/10000000:.2f} Cr</b>, you need to stay invested for <b>{extra_years:.1f} more years</b> beyond your current tenure of {tenure_years} years."
+            summary_text = f"⚠️ To reach your goal of <b>{format_indian_currency(goal_amount)}</b>, you need to stay invested for <b>{extra_years:.1f} more years</b> beyond your current tenure of {tenure_years} years."
     else:
         required_sip = (goal_amount / final_wealth) * sip_amount if final_wealth > 0 else 0
-        summary_text = f"❌ Your goal of <b>₹{goal_amount/10000000:.2f} Cr</b> is ambitious. Consider increasing your monthly SIP to approximately <b>₹{required_sip:,.0f}</b> or extending your investment tenure significantly."
+        summary_text = f"❌ Your goal of <b>{format_indian_currency(goal_amount)}</b> is ambitious. Consider increasing your monthly SIP to approximately <b>{format_indian_currency(required_sip)}</b> or extending your investment tenure significantly."
     
     st.markdown(f"""
         <div class="summary-box">
