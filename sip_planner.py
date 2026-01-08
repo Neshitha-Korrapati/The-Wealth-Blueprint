@@ -164,7 +164,7 @@ st.markdown("""
     
     .risk-button-label {
         color: #ffffff;
-        font-size: 1.1rem;
+        font-size: 1.5rem;
         font-weight: 700;
     }
     
