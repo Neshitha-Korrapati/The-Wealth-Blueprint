@@ -245,11 +245,11 @@ st.markdown("""
         background-color: #2563eb;
     }
 
-    /* Increase Size of Slider Value (The floating number on the handle) */
+    /* FORCE Increase Size using Zoom/Scale */
     div[data-testid="stThumbValue"] {
-        font-size: 2.3rem !important; 
-        font-weight: 800 !important;
-        padding-bottom: 5px !important; 
+        transform: scale(2.5) !important; /* 1.0 is normal, 2.0 is double size. Adjust this! */
+        transform-origin: bottom center !important; /* Keeps it centered on the handle */
+        font-weight: bold !important; 
     }
     </style>
 """, unsafe_allow_html=True)
