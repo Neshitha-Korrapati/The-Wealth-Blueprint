@@ -430,6 +430,8 @@ with col3:
         step=1,
         label_visibility="collapsed"
     )
+    st.markdown(f'<p class="input-value">{stepup_percent}%</p>', unsafe_allow_html=True)
+
 with col4:
     # MOVED HERE: Financial Goal Input
     st.markdown('<p class="input-label">Financial Goal (₹)</p>', unsafe_allow_html=True)
@@ -443,8 +445,7 @@ with col4:
     )
     # Added formatting to match other inputs
     st.markdown(f'<p class="input-value">{format_indian_currency(goal_amount)}</p>', unsafe_allow_html=True)
-    st.markdown(f'<p class="input-value">{stepup_percent}%</p>', unsafe_allow_html=True)
-
+    
 
 st.markdown("<br>", unsafe_allow_html=True)
 
