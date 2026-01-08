@@ -394,7 +394,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.markdown('<p class="input-label">Monthly SIP Amount (₹)</p>', unsafe_allow_html=True)
