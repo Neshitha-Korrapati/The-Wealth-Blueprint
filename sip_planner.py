@@ -811,11 +811,18 @@ with tab2:
     
     # Tax & Real Value Summary
     col_sum1, col_sum2 = st.columns(2)
-    
+
+    # Tooltip Text Definitions (Formatted with HTML line breaks &#10; for clean display)
+    tax_tooltip = """🔍 UNDERSTANDING LTCG TAX:&#10;• WHAT IT IS: Long Term Capital Gains (LTCG) tax applies to profits from equity funds held for over 1 year.&#10;• THE RULE: As per current Indian tax laws, profits up to ₹1.25 Lakh in a financial year are TAX-FREE. Any profit above this limit is taxed at 12.5%.&#10;• CALCULATION: (Total Wealth Gain - ₹1.25 Lakh Exemption) × 12.5%.&#10;• INTERPRETATION: The 'Net Post-Tax Wealth' is the actual amount that hits your bank account after the government takes its share."""
+
+    inflation_tooltip = """📉 UNDERSTANDING REAL VALUE:&#10;• THE REALITY: Inflation (price rise) eats away the value of money. ₹1 Crore after 20 years will not buy you a luxury house like it does today; it might only buy a small apartment.&#10;• THE CALCULATION: We discount your Future Maturity Value by the expected inflation rate (e.g., 6%) for every year of your tenure.&#10;• INTERPRETATION: This figure shows what your future money is worth in TODAY'S terms. Use this specific number to judge if your corpus is truly enough for your lifestyle goals."""
     with col_sum1:
         st.markdown(f"""
             <div class="section-card">
-                <h3 style="color: #ffffff; margin-bottom: 1rem;">💼 Tax Impact (LTCG)</h3>
+                <h3 style="color: #ffffff; margin-bottom: 1rem;">
+                    💼 Tax Impact (LTCG)
+                    <span title="{tax_tooltip}" style="cursor: help; color: #60a5fa; font-size: 1rem; margin-left: 8px;">(?)</span>
+                </h3>
                 <p style="color: #e2e8f0; font-size: 1rem; margin: 0.8rem 0;">
                     <b>Gross Wealth:</b> {format_indian_currency(final_wealth)}<br>
                     <b>LTCG Tax (12.5%):</b> <span style="color: #ef4444;">-{format_indian_currency(ltcg_tax)}</span><br>
@@ -827,7 +834,10 @@ with tab2:
     with col_sum2:
         st.markdown(f"""
             <div class="section-card">
-                <h3 style="color: #ffffff; margin-bottom: 1rem;">🔄 Real Purchasing Power</h3>
+                <h3 style="color: #ffffff; margin-bottom: 1rem;">
+                    🔄 Real Purchasing Power
+                    <span title="{inflation_tooltip}" style="cursor: help; color: #60a5fa; font-size: 1rem; margin-left: 8px;">(?)</span>
+                </h3>
                 <p style="color: #e2e8f0; font-size: 1rem; margin: 0.8rem 0;">
                     <b>Future Value:</b> {format_indian_currency(final_wealth)}<br>
                     <b>Inflation Adjusted ({inflation_rate}%):</b><br>
