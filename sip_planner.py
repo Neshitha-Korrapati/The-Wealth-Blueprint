@@ -245,11 +245,18 @@ st.markdown("""
         background-color: #2563eb;
     }
 
-    /* FORCE Increase Size using Zoom/Scale */
-    div[data-testid="stThumbValue"] {
-        transform: scale(2.5) !important; /* 1.0 is normal, 2.0 is double size. Adjust this! */
-        transform-origin: bottom center !important; /* Keeps it centered on the handle */
-        font-weight: bold !important; 
+    /* FORCE Slider Number Size - Aggressive Method */
+    div[data-testid="stThumbValue"],
+    div[data-testid="stThumbValue"] * {
+        font-size: 28px !important;    /* Much larger font */
+        font-weight: 900 !important;   /* Extra Bold */
+        min-width: 40px !important;    /* Force box to be wide enough */
+        height: auto !important;       /* Allow height to grow */
+        line-height: 1.2 !important;   /* Center the text vertically */
+        display: flex !important;      /* Ensure centering */
+        align-items: center !important;
+        justify-content: center !important;
+ 
     }
     </style>
 """, unsafe_allow_html=True)
