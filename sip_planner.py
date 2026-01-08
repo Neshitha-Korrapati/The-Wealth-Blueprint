@@ -815,10 +815,10 @@ with tab2:
         st.markdown(f"""
             <div class="section-card">
                 <h3 style="color: #ffffff; margin-bottom: 1rem;">💼 Tax Impact (LTCG)</h3>
-                <p style="color: #e2e8f0; margin: 0.5rem 0;">
-                    <b>Gross Wealth:</b> ₹{final_wealth:,.0f}<br>
-                    <b>LTCG Tax (12.5%):</b> <span style="color: #ef4444;">-₹{ltcg_tax:,.0f}</span><br>
-                    <b style="color: #10b981; font-size: 1.2rem;">Net Post-Tax Wealth:</b> ₹{post_tax_wealth:,.0f}
+                <p style="color: #e2e8f0; margin: 0.8rem 0;">
+                    <b>Gross Wealth:</b> {format_indian_currency(final_wealth)}<br>
+                    <b>LTCG Tax (12.5%):</b> <span style="color: #ef4444;">-{format_indian_currency(ltcg_tax)}</span><br>
+                    <b style="color: #10b981; font-size: 1.5rem;">Net Post-Tax Wealth:</b> {format_indian_currency(post_tax_wealth)}
                 </p>
             </div>
         """, unsafe_allow_html=True)
@@ -827,11 +827,10 @@ with tab2:
         st.markdown(f"""
             <div class="section-card">
                 <h3 style="color: #ffffff; margin-bottom: 1rem;">🔄 Real Purchasing Power</h3>
-                <p style="color: #e2e8f0; margin: 0.5rem 0;">
-                    <b>Future Value:</b> ₹{final_wealth:,.0f}<br>
+                <p style="color: #e2e8f0; margin: 0.8rem 0;">
+                    <b>Future Value:</b> {format_indian_currency(final_wealth)}<br>
                     <b>Inflation Adjusted ({inflation_rate}%):</b><br>
-                    <b style="color: #10b981; font-size: 1.2rem;">Today's Value:</b> ₹{real_value:,.0f}
-                </p>
+                    <b style="color: #10b981; font-size: 1.5rem;">Today's Value:</b>{format_indian_currency(real_value)}
             </div>
         """, unsafe_allow_html=True)
 
