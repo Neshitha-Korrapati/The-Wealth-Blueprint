@@ -202,7 +202,7 @@ st.markdown("""
     
     .summary-text {
         color: #e0e7ff;
-        font-size: 1.1rem;
+        font-size: 1.5rem;
         line-height: 1.6;
         margin: 0;
     }
