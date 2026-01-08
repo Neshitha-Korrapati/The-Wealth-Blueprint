@@ -834,7 +834,7 @@ with tab2:
                     💼 Tax Impact (LTCG)
                     <span title="{tax_tooltip}" style="cursor: help; color: #60a5fa; font-size: 1rem; margin-left: 8px;">(?)</span>
                 </h3>
-                <p style="color: #e2e8f0; font-size: 1rem; margin: 0.8rem 0;">
+                <p style="color: #e2e8f0; margin: 0.5rem 0; font-size: 1.1rem; line-height: 1.8;">
                     <b>Gross Wealth:</b> {format_indian_currency(final_wealth)}<br>
                     <b>LTCG Tax (12.5%):</b> <span style="color: #ef4444;">-{format_indian_currency(ltcg_tax)}</span><br>
                     <b style="color: #10b981; font-size: 1.3rem;">Net Post-Tax Wealth:</b> {format_indian_currency(post_tax_wealth)}
@@ -849,10 +849,11 @@ with tab2:
                     🔄 Real Purchasing Power
                     <span title="{inflation_tooltip}" style="cursor: help; color: #60a5fa; font-size: 1rem; margin-left: 8px;">(?)</span>
                 </h3>
-                <p style="color: #e2e8f0; font-size: 1rem; margin: 0.8rem 0;">
+                <p style="color: #e2e8f0; margin: 0.5rem 0; font-size: 1.1rem; line-height: 1.8;">
                     <b>Future Value:</b> {format_indian_currency(final_wealth)}<br>
                     <b>Inflation Adjusted:</b>({inflation_rate}%)<br>
                     <b style="color: #10b981; font-size: 1.3rem;">Today's Value:</b>{format_indian_currency(real_value)}
+                </p>
             </div>
         """, unsafe_allow_html=True)
 
