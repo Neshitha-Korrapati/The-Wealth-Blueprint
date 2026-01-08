@@ -367,7 +367,7 @@ st.markdown("""
 # Section 1: Investment Parameters
 st.markdown("""
     <div class="section-card">
-        <h2 class="section-title">" " Investment Parameters</h2>
+        <h2 class="section-title">" " + Investment Parameters</h2>
     </div>
 """, unsafe_allow_html=True)
 
@@ -415,7 +415,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 # Section 2: Strategy & Risk Profile
 st.markdown("""
     <div class="section-card">
-        <h2 class="section-title"> " " Select Risk Profile</h2>
+        <h2 class="section-title"> " " + Select Risk Profile</h2>
     </div>
 """, unsafe_allow_html=True)
 
