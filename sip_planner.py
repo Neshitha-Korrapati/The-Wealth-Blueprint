@@ -737,7 +737,7 @@ with tab2:
             annotations=[dict(
                 text=f'<b>Portfolio<br>Mix</b>',
                 x=0.5, y=0.5,
-                font_size=16,
+                font_size=20,
                 font_color='#10b981', # Emerald Text
                 showarrow=False
             )],
