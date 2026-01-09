@@ -256,6 +256,51 @@ st.markdown("""
         font-weight: 500;   /* Optional: Made slightly bolder for better visibility */
         margin-top: 0.5rem; 
     }
+    /* --- DYNAMIC RISK BUTTON COLORS --- */
+    
+    /* 1. Conservative (First Column) -> Emerald Green */
+    div[data-testid="column"]:nth-of-type(1) button[kind="primary"] {
+        background: linear-gradient(135deg, #065f46 0%, #10b981 100%) !important;
+        border-color: #10b981 !important;
+        color: white !important;
+    }
+    
+    /* 2. Balanced (Second Column) -> Amber/Orange */
+    div[data-testid="column"]:nth-of-type(2) button[kind="primary"] {
+        background: linear-gradient(135deg, #b45309 0%, #f59e0b 100%) !important;
+        border-color: #f59e0b !important;
+        color: white !important; /* White text looks cleaner on dark orange */
+    }
+
+    /* 3. Aggressive (Third Column) -> Red */
+    div[data-testid="column"]:nth-of-type(3) button[kind="primary"] {
+        background: linear-gradient(135deg, #7f1d1d 0%, #ef4444 100%) !important;
+        border-color: #ef4444 !important;
+        color: white !important;
+    }
+    
+    /* --- HOVER EFFECTS (Hint at the color before clicking) --- */
+    
+    /* Conservative Hover */
+    div[data-testid="column"]:nth-of-type(1) button[kind="secondary"]:hover {
+        border-color: #000000 !important;
+        color: #038745 !important;
+        background-color: rgba(16, 185, 129, 0.1) !important;
+    }
+    
+    /* Balanced Hover */
+    div[data-testid="column"]:nth-of-type(2) button[kind="secondary"]:hover {
+        border-color: #000000 !important;
+        color: #de8c02 !important;
+        background-color: rgba(245, 158, 11, 0.1) !important;
+    }
+    
+    /* Aggressive Hover */
+    div[data-testid="column"]:nth-of-type(3) button[kind="secondary"]:hover {
+        border-color: #000000 !important;
+        color: #b30404 !important;
+        background-color: rgba(239, 68, 68, 0.1) !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
